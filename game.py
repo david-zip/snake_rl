@@ -8,12 +8,6 @@ pygame.init()   # initialises all the modules correctly
 font = pygame.font.Font('snake_game/arial.ttf', 25)
 #font = pygame.font.SysFont('arial', 25)    # if you dont have font file but slower to load
 
-# reset
-# reward
-# play(action) -> direction
-# game_iteration
-# is_collision
-
 class Direction(Enum):
     RIGHT = 1
     LEFT = 2
@@ -23,7 +17,7 @@ class Direction(Enum):
 Point = namedtuple("Point", 'x, y')
 
 BLOCK_SIZE = 20
-SPEED = 40
+SPEED = 100
 
 # RGB colours
 BLACK = (0,0,0)
@@ -148,7 +142,7 @@ class SnakeGameAI():
 
         if self.is_collision() or self.frame_iteration > 100*len(self.snake):
             game_over = True
-            reward = -15
+            reward = -50
             return reward, game_over, self.score
 
         # place new food if eaten or just move
